@@ -1,0 +1,65 @@
+{
+  "name": "@leadiq/apollo-link-defer",
+  "version": "0.0.1",
+  "description": "Deferred loading of a link based on Promises or Observables",
+  "main": "./lib/bundle.umd.js",
+  "module": "./lib/index.js",
+  "jsnext:main": "./lib/index.js",
+  "typings": "./lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leadiq/apollo-link-defer.git"
+  },
+  "homepage": "https://github.com/leadiq/apollo-link-defer#readme",
+  "author": "Paul Daniels",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build:browser": "browserify ./lib/bundle.umd.js -o=./lib/bundle.js --i apollo-utilities --i graphql --i zen-observable && npm run minify:browser",
+    "build": "tsc -p .",
+    "bundle": "rollup -c",
+    "clean": "rimraf lib/* && rimraf coverage/*",
+    "coverage": "jest --coverage",
+    "filesize": "npm run build && npm run build:browser",
+    "lint": "tslint --type-check -p tsconfig.json -c ../../tslint.json src/*.ts",
+    "minify:browser": "uglifyjs -c -m -o ./lib/bundle.min.js -- ./lib/bundle.js",
+    "postbuild": "npm run bundle",
+    "prebuild": "npm run clean",
+    "prepublishOnly": "npm run clean && npm run build",
+    "test": "jest",
+    "watch": "tsc -w -p . & rollup -c -w"
+  },
+  "devDependencies": {
+    "@types/graphql": "^0.12.3",
+    "@types/jest": "^22.1.1",
+    "browserify": "^16.0.0",
+    "graphql": "^0.13.0",
+    "graphql-tag": "^2.7.3",
+    "jest": "^22.2.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.55.3",
+    "ts-jest": "^22.0.3",
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.1",
+    "uglify-js": "^3.3.10"
+  },
+  "dependencies": {
+    "apollo-link": "^1.1.0",
+    "zen-observable": "^0.8.2"
+  },
+  "peerDependencies": {
+    "graphql": "^0.13.0"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ]
+  }
+}

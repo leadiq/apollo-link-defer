@@ -1,0 +1,1 @@
+export { deferLink } from './link'
