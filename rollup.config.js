@@ -3,7 +3,7 @@ const globals = {
 }
 
 export default {
-  input: 'src/index.js',
+  input: 'lib/index.js',
   output: {
     file: 'lib/bundle.umd.js',
     format: 'umd',

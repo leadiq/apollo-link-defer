@@ -1,5 +1,5 @@
 {
-  "name": "@leadiq/apollo-link-defer",
+  "name": "apollo-link-defer",
   "version": "0.0.1",
   "description": "Deferred loading of a link based on Promises or Observables",
   "main": "./lib/bundle.umd.js",
