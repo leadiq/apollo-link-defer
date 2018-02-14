@@ -3,6 +3,10 @@
 ## Purpose
 An Apollo Link to allow links to asynchronously be prepared, even after the `ApolloClient` has been constructed.
 
+## Installation
+
+`npm install apollo-link-defer --save`
+
 ## Usage
 ```js
 import { WebSocketLink } from 'apollo-link-ws'
