@@ -1,5 +1,5 @@
 import {ApolloLink, FetchResult, NextLink, Observable, Operation, toPromise} from 'apollo-link'
-import ZenObservable from 'zen-observable'
+import {ZenObservable} from "zen-observable";
 
 export type DeferredLinkFn = () => Promise<ApolloLink>;
 export type FutureLink = Promise<ApolloLink> | Observable<ApolloLink> | DeferredLinkFn;
