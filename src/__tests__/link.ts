@@ -29,5 +29,26 @@ describe('Defer', () => {
             results: [error],
             done
         })
+    });
+
+    it('should not start lazy links until a request is made', (done) => {
+        let count = 0;
+        const deferredLink = () => {
+            count++;
+            return Promise.resolve(new ApolloLink(() => Observable.of({data: {count: 1}})));
+        };
+        const link = deferLink(deferredLink);
+
+        expect(count).toBe(0);
+
+        testLinkResults({
+          link,
+          results: [{count: 1}]
+        });
+
+        jest.advanceTimersByTime(200);
+
+        expect(count).toBe(1);
+        done();
     })
 });
